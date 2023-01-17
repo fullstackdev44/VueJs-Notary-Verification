@@ -1,10 +1,1 @@
-front-end
-
-cd frontend
-
-yarn
-
-yarn dev
-
-
-npm run lint -- --fix  
+Notarization Platform built in VueJs (Frontend) and NodeJs (Frontend).
