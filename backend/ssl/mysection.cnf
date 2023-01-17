@@ -1,0 +1,3 @@
+[mysection]
+    keyUsage = digitalSignature, nonRepudiation
+    extendedKeyUsage = emailProtection, clientAuth

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueNotary Session Report</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+        .headermiddlesection {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .afterheadermiddlesection {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+        .fieldline {
+            margin-top: 20px;
+            font-size: 10px;
+        }
+        .fieldname {
+            width: 40%;
+            display: inline-block;
+            height: 100%;
+            vertical-align: top;
+            font-weight: bold;
+        }
+        .fieldvalue {
+            width: 59%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 20px">
+        <div class="header">
+            <img src="https://bluenotary.us/assets/img/logo-a4-circle.png" alt="Logo BlueNotary" style="height: 45px; width: 48px;margin-right: 10px;">
+            <!-- <img src="http://bluenotary.us/assets/img/logo-a4-b.png" alt="Logo BlueNotary" style="height: 45px; width: 48px;margin-right: 10px;"> -->
+            <div style="font-size: 1.7rem; text-decoration: none; margin-top: 12px; display: inline-block; height: 100%; vertical-align: top;">BlueNotary</div>
+        </div>
+        <div class="headermiddlesection">
+            Closing Session Report
+        </div>
+        <div class="afterheadermiddlesection">
+            This document was notarized using remote online notarization via <a href="https://bluenotary.us/">bluenotary.us</a>
+        </div>
+        <div class="middlesection">
+            <div class="fieldline">
+                <div class="fieldname">Session ID</div>
+                <div class="fieldvalue"><%= shortSessionId %></div>
+            </div>
+            <div class="fieldline">
+                <div class="fieldname">Full Session ID</div>
+                <div class="fieldvalue"><%= fullSessionId %></div>
+            </div>
+            <div class="fieldline">
+                <div class="fieldname">Signer Name and Address</div>
+                <div class="fieldvalue">
+                    <%= primarySignerName %> - <%= primarySignerEmail %> <br>
+                    <%= primarySignerAddress1 %> <br>
+                    <%= primarySignerAddress2 %>
+                </div>
+            </div>
+            <% if (additionalSignerDocs.length) { %>
+            <div class="fieldline">
+                <div class="fieldname">Additional Signer Name and Emails</div>
+                <div class="fieldvalue">
+                    <% for(var i=0; i < additionalSignerDocs.length; i++) { %>
+                        <%= additionalSignerDocs[i].name %> - <%= additionalSignerDocs[i].email %><br>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+            <div class="fieldline">
+                <div class="fieldname">Notary Name</div>
+                <div class="fieldvalue"><%= notaryName %></div>
+            </div>
+            <div class="fieldline">
+                <div class="fieldname">Notary Commission Number</div>
+                <div class="fieldvalue"><%= notaryCommissionNumber %></div>
+            </div>
+            <div class="fieldline">
+                <div class="fieldname">Notary Commission Expiry Date</div>
+                <div class="fieldvalue"><%= notaryCommissionExpiry %></div>
+            </div>
+            <div class="fieldline">
+                <div class="fieldname">Final Document Name</div>
+                <div class="fieldvalue">
+                    <% for(var i=0; i < finalDocumentNames.length; i++) { %>
+                        <%= finalDocumentNames[i] %><br>
+                    <% } %>
+                </div>
+            </div>
+            <div class="fieldline">
+                <div class="fieldname">Notarization Start Time</div>
+                <div class="fieldvalue"><%= notarizationStartTime %></div>
+            </div>
+            <div class="fieldline">
+                <div class="fieldname">Notarization End Time</div>
+                <div class="fieldvalue"><%= notarizationEndTime %></div>
+            </div>
+            <% if (credentialsProvidedType !== false) { %>
+            <div class="fieldline">
+                <div class="fieldname">Type of Credentials Provided</div>
+                <div class="fieldvalue">
+                    <%= credentialsProvidedType %> <br>
+                    <% if (credentialsProvidedState) { %>
+                        State - <%= credentialsProvidedState %> <br>
+                    <% } %>
+                    <% if (credentialsProvidedExpiry) { %>
+                        Expiry - <%= credentialsProvidedExpiry %>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+            <!-- <div class="fieldline">
+                <div class="fieldname">Fee Charged</div>
+                <div class="fieldvalue">
+                    <% for(var i=0; i < feesCharged.length; i++) { %>
+                        <%= feesCharged[i].name %> : <%= feesCharged[i].currency %><%= feesCharged[i].price %> <br>
+                    <% } %>
+                    Total : <%= totalFeesCharged %>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
